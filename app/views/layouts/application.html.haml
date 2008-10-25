@@ -4,11 +4,19 @@
     %title Portfolio App
     = stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/reset/reset-min.css"
     = stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css"
+    = stylesheet_link_tag "base"
     = yield :head
   %body
     #main
       #header
+        %h1 Portfoli App
+      %ul#tabs
+        %li Projects
+        %li Blog
+        %li Books
       #body
         #content= yield
-        #sidebar= yield :sidebar
-      #footer
+        #sidebar= (sidebar = yield(:sidebar) ? sidebar : "Sidebar")
+      #push
+
+    #footer Powered by rails

@@ -1,0 +1,41 @@
+!width = 960px
+*
+  :margin 0
+
+html, body
+  :height 100%
+
+#main
+  :width = !width
+  :min-height 100%
+  :height auto !important
+  :height 100%
+  :margin 0 auto -50px
+  #header
+    :height 150px
+    :background #04C4BB
+  #body
+    :clear both
+    #content
+      :width 66%
+      :background #D9FFA9
+      :float left
+    #sidebar
+      :width 33%
+      :background #F4FCE8
+      :float right
+
+#footer, #push
+  :height 50px
+
+#footer
+  :width = !width
+  :margin 0 auto
+  :background #04C4BB
+
+
+#main ul#tabs
+  :margin -16px 0 0
+  li
+    :list-style none
+    :float left
