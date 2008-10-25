@@ -3,3 +3,4 @@ config/database.yml
 tmp/*
 doc/*doc
 nbproject
+db/development_structure.sql
