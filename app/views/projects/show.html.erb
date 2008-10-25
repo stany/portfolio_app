@@ -1,0 +1,38 @@
+<p>
+  <b>User:</b>
+  <%=h @project.user_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @project.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @project.description %>
+</p>
+
+<p>
+  <b>Description view:</b>
+  <%=h @project.description_view %>
+</p>
+
+<p>
+  <b>Started on:</b>
+  <%=h @project.started_on %>
+</p>
+
+<p>
+  <b>Ended on:</b>
+  <%=h @project.ended_on %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%=h @project.company %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

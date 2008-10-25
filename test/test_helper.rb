@@ -4,6 +4,7 @@ require 'test_help'
 require 'factory_girl'
 
 class Test::Unit::TestCase
+  include AuthenticatedTestHelper
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
   # test database remains unchanged so your fixtures don't have to be reloaded
@@ -36,4 +37,8 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+end
+
+def host!(host)
+  @request.host = host
 end

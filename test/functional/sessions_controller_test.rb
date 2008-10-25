@@ -5,15 +5,13 @@ require 'sessions_controller'
 class SessionsController; def rescue_action(e) raise e end; end
 
 class SessionsControllerTest < ActionController::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
-  # Then, you can remove it from this and the units test.
-  include AuthenticatedTestHelper
-
+  
   def test_should_login_and_redirect
     u = Factory(:user)
     post :create, :login => u.login, :password => 'monkey'
     assert session[:user_id]
     assert_response :redirect
+    assert_redirected_to projects_path(:subdomain => u.login)
   end
 
   def test_should_fail_login_and_not_redirect
@@ -28,7 +26,7 @@ class SessionsControllerTest < ActionController::TestCase
     login_as u
     get :destroy
     assert_nil session[:user_id]
-    assert_response :redirect
+    assert_redirected_to root_path
   end
 
   def test_should_remember_me

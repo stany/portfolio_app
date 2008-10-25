@@ -1,0 +1,39 @@
+<h1>New project</h1>
+
+<% form_for(@project) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :description_view %><br />
+    <%= f.text_area :description_view %>
+  </p>
+  <p>
+    <%= f.label :started_on %><br />
+    <%= f.date_select :started_on %>
+  </p>
+  <p>
+    <%= f.label :ended_on %><br />
+    <%= f.date_select :ended_on %>
+  </p>
+  <p>
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', projects_path %>

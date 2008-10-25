@@ -11,3 +11,12 @@ Factory.define :user do |u|
   u.activated_at {5.days.ago.to_s :db}
   u.activation_code nil
 end
+
+Factory.define :project do |p|
+  p.association :user, :factory => :user
+  p.title 'Open Source Project'
+  p.description 'Made the next big thing'
+  p.started_on { 1.year.ago.to_s :db }
+  p.ended_on { 1.month.ago.to_s :db }
+  p.company "Google"
+end

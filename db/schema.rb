@@ -9,7 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081015181055) do
+ActiveRecord::Schema.define(:version => 20081025183426) do
+
+  create_table "projects", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.text     "description_view"
+    t.date     "started_on"
+    t.date     "ended_on"
+    t.string   "company"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40

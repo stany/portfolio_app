@@ -1,9 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
-  # Then, you can remove it from this and the units test.
-  include AuthenticatedTestHelper
 
   def test_should_allow_signup
     assert_difference 'User.count' do
@@ -57,6 +54,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_nil User.authenticate(user.login, 'monkey')
     get :activate, :activation_code => user.activation_code
     assert_redirected_to login_path
+
     assert_not_nil flash[:notice]
     assert_equal user, User.authenticate(user.login, 'monkey')
   end
