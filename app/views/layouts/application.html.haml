@@ -1,0 +1,14 @@
+!!! Strict
+%html
+  %head
+    %title Portfolio App
+    = stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/reset/reset-min.css"
+    = stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css"
+    = yield :head
+  %body
+    #main
+      #header
+      #body
+        #content= yield
+        #sidebar= yield :sidebar
+      #footer
