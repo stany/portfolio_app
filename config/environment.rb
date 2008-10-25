@@ -31,7 +31,7 @@ Rails::Initializer.run do |config|
   config.gem 'annotate-models', :lib => "annotate_models", :version => ">= 1.0.4"
   config.gem 'haml',  :version => ">= 2.0.3"
   config.gem 'mocha', :version => ">= 0.9.1"
-  
+  config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com', :version => ">= 1.1.3"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
