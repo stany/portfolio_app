@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_to projects_path(:subdomain => current_user.login)
+      redirect_to projects_root_url(:subdomain => current_user.login)
       flash[:notice] = "Logged in successfully"
     else
       note_failed_signin
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
   def destroy
     logout_killing_session!
     flash[:notice] = "You have been logged out."
-    redirect_to root_path
+    redirect_to root_url(:subdomain => false)
   end
 
 protected

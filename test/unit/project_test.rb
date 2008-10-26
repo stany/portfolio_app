@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
 
-  def test_should_validate_attributes
+  test "should validate attributes" do
     project = Factory.build(:project, :user => nil, :title => nil, :description => nil, :started_on => nil)
     assert !project.valid?
     assert project.errors.on(:user)
@@ -11,10 +11,15 @@ class ProjectTest < ActiveSupport::TestCase
     assert project.errors.on(:started_on)
   end
 
-  def test_should_create
+  test "should create" do
     project = Factory(:project)
     assert project.valid?
     assert !project.new_record?
+  end
+
+  test "should convert description to liquid template" do
+    project = Factory(:project, :description => '*hello*')
+    assert_equal '<p><strong>hello</strong></p>', project.description_view
   end
 
 

@@ -30,7 +30,8 @@ html, body {
 #footer {
   width: 960px;
   margin: 0 auto;
-  background: #04C4BB; }
+  background: #04C4BB;
+  clear: both; }
 
 #main ul#tabs {
   margin: -16px 0 0; }

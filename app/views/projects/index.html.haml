@@ -1,0 +1,12 @@
+%h2 Projects
+
+= render :partial => @projects
+
+= will_paginate @projects
+
+!= textilize("test & test")
+
+- content_for :sidebar do
+  .sidebar_block
+    %ul
+      %li= link_to "Add new project", new_project_url

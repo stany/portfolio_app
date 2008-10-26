@@ -1,0 +1,21 @@
+%fieldset
+  %legend Project information
+  %ol
+    %li
+      = f.label :title, "Title:"
+      = f.text_field :title
+    %li
+      = f.label :description, "Description:"
+      = f.text_area :description, {:rows => 5, :cols => 20}
+%fieldset
+  %legend How long and where was the project?
+  %ol
+    %li
+      = f.label :company, "Company:"
+      = f.text_field :company
+    %li
+      = f.label :started_on, "Started on:"
+      = f.date_select :started_on
+    %li
+      = f.label :ended_on, "Ended on:"
+      = f.date_select :ended_on

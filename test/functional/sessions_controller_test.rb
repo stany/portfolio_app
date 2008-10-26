@@ -11,7 +11,7 @@ class SessionsControllerTest < ActionController::TestCase
     post :create, :login => u.login, :password => 'monkey'
     assert session[:user_id]
     assert_response :redirect
-    assert_redirected_to projects_path(:subdomain => u.login)
+    assert_redirected_to root_url(:subdomain => u.login)
   end
 
   def test_should_fail_login_and_not_redirect
@@ -26,7 +26,7 @@ class SessionsControllerTest < ActionController::TestCase
     login_as u
     get :destroy
     assert_nil session[:user_id]
-    assert_redirected_to root_path
+    assert_redirected_to root_url(:subdomain => false)
   end
 
   def test_should_remember_me

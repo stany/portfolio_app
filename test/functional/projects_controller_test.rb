@@ -28,14 +28,7 @@ class ProjectsControllerTest < ActionController::TestCase
       post :create, :project => { :title => "Test", :description => "test", :started_on => Time.now.to_s(:db) }
     end
 
-    assert_redirected_to project_path(assigns(:project))
-  end
-
-  test "should show project" do
-    project = Factory(:project)
-    set_host(project.user)
-    get :show, :id => project.to_param
-    assert_response :success
+    assert_redirected_to projects_url
   end
 
   test "should get edit" do
@@ -50,7 +43,7 @@ class ProjectsControllerTest < ActionController::TestCase
     project = Factory(:project)
     login_and_set_host(project.user)
     put :update, :id => project.to_param, :project => { }
-    assert_redirected_to project_path(assigns(:project))
+    assert_redirected_to projects_url
   end
 
   test "should destroy project" do
