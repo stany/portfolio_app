@@ -2,6 +2,11 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
 
+  test "should redirect to root if subdomain doesn't exist" do
+    host! "bad.test"
+    get :index
+    assert_redirected_to root_url(:subdomain => false)
+  end
 
   test "should get index" do
     login_and_set_host

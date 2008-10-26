@@ -27,7 +27,6 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'mislav-will_paginate',        :source => 'http://gems.github.com', :lib => 'will_paginate',       :version => ">= 2.3.5"
   config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on", :version => ">= 1.0.2"
-  config.gem 'mbleigh-subdomain-fu',        :source => "http://gems.github.com", :lib => "subdomain-fu"
   config.gem 'annotate-models', :lib => "annotate_models", :version => ">= 1.0.4"
   config.gem 'haml',  :version => ">= 2.0.3"
   config.gem 'mocha', :version => ">= 0.9.1"

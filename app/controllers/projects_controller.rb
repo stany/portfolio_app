@@ -75,7 +75,7 @@ class ProjectsController < ApplicationController
 
   private
   def check_user
-    redirect_to root_path and return unless @user
+    redirect_to root_url(:subdomain => false) and return unless @user
   end
 
 end
