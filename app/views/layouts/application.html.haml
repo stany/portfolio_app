@@ -5,7 +5,8 @@
     %title Portfolio App
     = stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/reset/reset-min.css"
     = stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css"
-    = stylesheet_link_tag "base"
+    = stylesheet_link_tag 'base', 'projects'
+    = javascript_include_tag :defaults
     = yield :head
   %body
     #main
