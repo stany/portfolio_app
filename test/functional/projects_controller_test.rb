@@ -31,6 +31,14 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_redirected_to projects_url
   end
 
+  test "should get show" do
+    project = Factory(:project)
+    login_and_set_host(project.user)
+    get :show, :id => project.to_param
+    assert_response :success
+    assert assigns(:project)
+  end
+
   test "should get edit" do
     project = Factory(:project)
     login_and_set_host(project.user)

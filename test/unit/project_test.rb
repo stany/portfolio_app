@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
 
@@ -22,5 +22,10 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal '<p><strong>hello</strong></p>', project.description_view
   end
 
+  test "can belong to company" do
+    company = Factory(:company)
+    project = Factory(:project, :company => company)
+    assert_equal company, project.reload.company
+  end
 
 end

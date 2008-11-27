@@ -12,11 +12,18 @@ Factory.define :user do |u|
   u.activation_code nil
 end
 
+Factory.define :company do |c|
+  c.name "Google Inc."
+  c.url "http://www.google.com"
+end
+
 Factory.define :project do |p|
   p.association :user, :factory => :user
+  p.association :company, :factory => :company
   p.title 'Open Source Project'
   p.description 'Made the next big thing'
+  p.url "http://mail.google.com"
   p.started_on { 1.year.ago.to_s :db }
   p.ended_on { 1.month.ago.to_s :db }
-  p.company "Google"
 end
+

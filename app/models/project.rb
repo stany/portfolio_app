@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
+  belongs_to :company
 
   validates_presence_of :title, :description, :started_on, :user
   
