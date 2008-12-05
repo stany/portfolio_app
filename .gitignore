@@ -4,3 +4,6 @@ tmp/*
 doc/*doc
 nbproject
 db/development_structure.sql
+*/.DS_Store
+.loadpath
+.project

@@ -3,10 +3,9 @@
   <head>
     <meta content='text/html;charset=UTF-8' http-equiv='content-type' />
     <title>Portfolio App</title>
-    <link href="http://yui.yahooapis.com/2.6.0/build/reset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="http://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/base.css?1227809117" media="screen" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/projects.css?1227809117" media="screen" rel="stylesheet" type="text/css" />
+
+    <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
 
     <script src="/javascripts/prototype.js?1224095462" type="text/javascript"></script>
     <script src="/javascripts/effects.js?1224095462" type="text/javascript"></script>
@@ -17,24 +16,27 @@
   </head>
 
   <body>
-    <div id='main'>
-      <div id='header'>
-        <h1>Portfolio App</h1>
+    
+    <div id="container">
+      
+      <div id="header">
+        <h1>Portfolio<span>App</span></h1>
+        <ul id="navi">
+          <li class="active"><a href="#">Projects</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Books</a></li>
+        </ul>
+        <div id="sub_navi">Welcome back user, <a href="#">Logout</a></div>
+      </div>      
+      
+      <div id="content">
+        <%= yield %>
       </div>
-      <ul id='tabs'>
-        <li>Projects</li>
-        <li>Blog</li>
-        <li>Books</li>
-      </ul>
-      <div id='body'>
-        <div id='content'>
-          <%= yield %>
-        </div>
-        <div id='sidebar'><%= yield :sidebar %></div>
-      </div>
-      <div id='push'></div>
+      
+      <div class="clearfix"></div>
+      <div id="footer">Powered by rails</div>      
+    
     </div>
 
-    <div id='footer'>Powered by rails</div>
   </body>
 </html>
