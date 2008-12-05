@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-GB' xml:lang='en-GB' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='content-type' />
+    <title>Portfolio App</title>
+    <link href="http://yui.yahooapis.com/2.6.0/build/reset/reset-min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/base.css?1227809117" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/projects.css?1227809117" media="screen" rel="stylesheet" type="text/css" />
+
+    <script src="/javascripts/prototype.js?1224095462" type="text/javascript"></script>
+    <script src="/javascripts/effects.js?1224095462" type="text/javascript"></script>
+    <script src="/javascripts/dragdrop.js?1224095462" type="text/javascript"></script>
+    <script src="/javascripts/controls.js?1224095462" type="text/javascript"></script>
+    <script src="/javascripts/application.js?1224090267" type="text/javascript"></script>
+    
+  </head>
+
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <h1>Portfolio App</h1>
+      </div>
+      <ul id='tabs'>
+        <li>Projects</li>
+        <li>Blog</li>
+        <li>Books</li>
+      </ul>
+      <div id='body'>
+        <div id='content'>
+          <%= yield %>
+        </div>
+        <div id='sidebar'><%= yield :sidebar %></div>
+      </div>
+      <div id='push'></div>
+    </div>
+
+    <div id='footer'>Powered by rails</div>
+  </body>
+</html>

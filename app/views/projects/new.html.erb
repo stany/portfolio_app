@@ -1,0 +1,19 @@
+<h2> New project </h2>
+
+<%= error_messages_for :project %>
+
+<% form_for @project do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <fieldset class="submit">
+    <%= f.submit "Create" %>
+  </fieldset>
+<% end %>
+
+
+<% content_for :sidebar do %>
+  <div class="sidebar_block">
+    <ul>
+      <li><%= link_to "Project list", projects_url %></li>
+    </ul>
+  </div>
+<% end %>

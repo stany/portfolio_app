@@ -1,0 +1,13 @@
+<h2>Projects</h2>
+
+<%= render :partial => @projects %>
+
+<%= will_paginate @projects %>
+
+<% content_for :sidebar do %>
+  <div class="sidebar_block">
+    <ul>
+      <li><%= link_to "Add new project", new_project_url %></li>
+    </ul>
+  </div>
+<% end %>
