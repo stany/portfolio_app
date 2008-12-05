@@ -19,4 +19,5 @@ class CompanyTest < ActiveSupport::TestCase
     Factory(:project, :company => company, :title => 'Second project', :user => Factory(:user, :login => 'second'))
     assert_equal 2, company.projects.count
   end
+  
 end

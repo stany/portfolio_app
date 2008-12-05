@@ -28,4 +28,13 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal company, project.reload.company
   end
 
+  test "should have tags" do
+    project = Factory(:project)
+    project.tag_list = "first, second, third"
+    project.save
+    
+    assert 3, project.tags.size
+    assert Project.tagged_with('first', :on => :tags).include?(project)
+  end
+
 end

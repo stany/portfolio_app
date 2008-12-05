@@ -63,7 +63,22 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert_redirected_to projects_path
   end
-
+  
+  test "should post tags" do
+    login_and_set_host
+    post :create, :project => { :title => "Test", :description => "test", :started_on => Time.now.to_s(:db), :tag_list => 'first, second, third'}
+    assert_redirected_to projects_url
+    assert_equal 3, Project.last.tags.size
+  end
+  
+  test "should update tags" do
+    project = Factory(:project, :tag_list => 'one')
+    login_and_set_host(project.user)
+    put :update, {:id => project.to_param, :project => {:tag_list => 'one, two, three'}}
+    assert_redirected_to projects_path
+    assert_equal 3, project.reload.tags.size
+  end
+  
   private
   def login_and_set_host(user = nil)
     user = user ? user : Factory(:user)
