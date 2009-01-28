@@ -25,12 +25,12 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'mislav-will_paginate',        :source => 'http://gems.github.com', :lib => 'will_paginate',       :version => ">= 2.3.5"
+  config.gem 'mislav-will_paginate',        :source => 'http://gems.github.com', :lib => 'will_paginate',       :version => ">= 2.3.6"
   config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on", :version => ">= 1.0.2"
   config.gem 'annotate-models', :lib => "annotate_models", :version => ">= 1.0.4"
-  config.gem 'mocha', :version => ">= 0.9.1"
-  config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com', :version => ">= 1.1.3"
-  config.gem 'RedCloth', :version => ">= 4.0.4"
+  config.gem 'mocha', :version => ">= 0.9.4"
+  config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com', :version => ">= 1.1.5"
+  config.gem 'RedCloth', :version => ">= 4.1.1"
   config.gem 'liquid', :version => ">= 1.9.0"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
