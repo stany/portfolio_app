@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :title, :description, :started_on, :user
   validates_associated :company, :on => :save
   
+  after_update :save_company
   
   before_save :liquidize
 
@@ -13,14 +14,18 @@ class Project < ActiveRecord::Base
   has_many :assets
 
   def company_attributes=(attributes)
-    if company
-      company.attributes = attributes
+    if self.company
+      self.company.attributes = attributes
     else
-      company = Company.new(attributes)
+      self.company = Company.new(attributes)
     end
   end
 
   private
+  
+  def save_company
+    self.company.save(false)
+  end
   
   def liquidize
     self.description_view = RedCloth.new(Liquid::Template.parse(self.description).render).to_html

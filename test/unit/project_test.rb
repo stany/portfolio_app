@@ -17,6 +17,20 @@ class ProjectTest < ActiveSupport::TestCase
     assert !project.new_record?
   end
 
+  test "should save new company" do
+    project = Factory.build(:project, :company => nil)
+    project.company_attributes = {:name => 'New Company'}
+    project.save!
+    assert_equal 'New Company', project.reload.company.name
+  end
+
+  test "should edit company" do
+    project = Factory(:project)
+    project.company_attributes = {:name => 'Yahoo Inc.'}
+    project.save!
+    assert_equal 'Yahoo Inc.', project.reload.company.name
+  end
+
   test "should convert description to liquid template" do
     project = Factory(:project, :description => '*hello*')
     assert_equal '<p><strong>hello</strong></p>', project.description_view

@@ -6,6 +6,8 @@
   <%= render :partial => 'form', :locals => {:f => f} %>
   <fieldset class="submit">
     <%= f.submit "Save" %>
+    <%= button_to 'Delete', project_path(@project), :method => :delete, :confirm => 'Are you sure?' %>
+    <%= link_to 'Back', :back %>
   </fieldset>
 <% end %>
 

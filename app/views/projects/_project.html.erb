@@ -1,5 +1,5 @@
 <% div_for project do %>
-  <h3><%= h(project.title) %></h3>
+  <h3><%= link_to h(project.title), project %></h3>
   <%= project.description_view %>
   <p>Started on: <%= project.started_on %></p>
   <p>Ended on: <%= project.ended_on %></p>

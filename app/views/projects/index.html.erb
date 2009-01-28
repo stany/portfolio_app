@@ -6,18 +6,12 @@
   
   <%= will_paginate @projects %>
   
-  <% content_for :sidebar do %>
-    <div class="sidebar_block">
-      <ul>
-        <li><%= link_to "Add new project", new_project_url %></li>
-      </ul>
-    </div>
-  <% end %>
-
 </div>
 
 <div class="span-8 last">
-  
-  Sidebar
-  
+  <% owner_area do %>
+    <ul>
+      <li><%= link_to "Add new project", new_project_url %></li>
+    </ul>
+  <% end%>
 </div>  
