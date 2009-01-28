@@ -5,6 +5,7 @@ doc/*doc
 nbproject
 db/development_structure.sql
 */.DS_Store
+.DS_Store
 .loadpath
 .project
 public/system/photos

@@ -1,10 +1,11 @@
 <% div_for project do %>
   <h3><%= link_to h(project.title), project %></h3>
+  <ul>
+    <li><strong>Date:</strong> <%= project.started_on %> to <%= project.ended_on %></li>
+    <li><strong>Tags:</strong> <%= project.tags.join(', ') %></li>
+    <% if project.company %>
+      <li><strong>Company:</strong> <%= link_to project.company.name, project.company.url %></li>
+    <% end %>
+  </ul>
   <%= project.description_view %>
-  <p>Started on: <%= project.started_on %></p>
-  <p>Ended on: <%= project.ended_on %></p>
-  <p>Tags: <%= project.tags.join(', ') %></p>
-  <% if project.company %>
-    <p>Company: <%= link_to project.company.name, project.company.url %></p>
-  <% end %>
 <% end %>

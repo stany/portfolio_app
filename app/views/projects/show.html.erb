@@ -1,14 +1,16 @@
-<% div_for @project do %>
-  <h3><%= h(@project.title) %></h3>
-  <%= @project.description_view %>
-  <p>Started on: <%= @project.started_on %></p>
-  <p>Ended on: <%= @project.ended_on %></p>
-  <p>Tags: <%= @project.tags.join(', ') %></p>
-  <% if @project.company %>
-    <p>Company: <%= link_to @project.company.name, @project.company.url %></p>
+<div class="span-24">
+  <% div_for @project do %>
+    <h3><%= h(@project.title) %></h3>
+    <ul>
+    <li><strong>Date:</strong> <%= @project.started_on %> to <%= @project.ended_on %></li>
+    <li><strong>Tags:</strong> <%= @project.tags.join(', ') %></li>
+    <% if @project.company %>
+      <li><strong>Company:</strong> <%= link_to @project.company.name, @project.company.url %></li>
+    <% end %>
+    </ul>
+    <%= @project.description_view %>
+    <% owner_area do %>
+      <%= link_to 'Edit', edit_project_path(@project), :class => "Button" %>
+    <% end %>
   <% end %>
-  <% owner_area do %>
-    <%= link_to 'Edit', edit_project_path(@project) %>
-  <% end %>
-  
-<% end %>
+</div>

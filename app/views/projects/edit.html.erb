@@ -1,21 +1,25 @@
-<h2> Edit project </h2>
+<div class="span-24">
 
-<%= error_messages_for :project %>
+  <h2> Edit project </h2>
+  
+  <%= error_messages_for :project %>
+  
+  <% form_for @project do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    <fieldset class="submit">
+      <%= f.submit "Save", :class => "Button Left" %>
+	    <%= link_to 'Delete', project_path(@project), :method => :delete, :confirm => 'Are you sure?', :class => "Button" %>
+	    <%= link_to '&laquo; Back', :back %>
+    </fieldset>
+  <% end %>
+  
+  
+  <% content_for :sidebar do %>
+    <div class="sidebar_block">
+      <ul>
+        <li><%= link_to "Project list", projects_url %></li>
+      </ul>
+    </div>
+  <% end %>
 
-<% form_for @project do |f| %>
-  <%= render :partial => 'form', :locals => {:f => f} %>
-  <fieldset class="submit">
-    <%= f.submit "Save" %>
-    <%= link_to 'Delete', project_path(@project), :method => :delete, :confirm => 'Are you sure?' %>
-    <%= link_to 'Back', :back %>
-  </fieldset>
-<% end %>
-
-
-<% content_for :sidebar do %>
-  <div class="sidebar_block">
-    <ul>
-      <li><%= link_to "Project list", projects_url %></li>
-    </ul>
-  </div>
-<% end %>
+</div>

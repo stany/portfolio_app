@@ -1,32 +1,32 @@
-<fieldset>
+<fieldset class="CreateProjectFields">
   <legend> Project information </legend>
-  <ol>
+  <ul>
     <li>
       <%= f.label :title, "Title:" %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, :class => "text" %>
     </li>
     <li>
       <%= f.label :description, "Description:" %>
-      <%= f.text_area :description, {:rows => 5, :cols => 20} %>
+      <%= f.text_area :description %>
     </li>
     <li>
       <%= f.label :tag_list, "Tags:" %>
-      <%= f.text_field :tag_list %>
+      <%= f.text_field :tag_list, :class => "text" %>
     </li>
-  </ol>
+  </ul>
 </fieldset>
 
-<fieldset>
+<fieldset class="CreateProjectFields">
   <legend> How long and where was the project? </legend>
-  <ol>
+  <ul>
     <% fields_for 'project[company_attributes]', @project.company do |pc| %>
     <li>
       <%= pc.label :name, "Name:" %>
-      <%= pc.text_field :name %>
+      <%= pc.text_field :name, :class => "text" %>
     </li>
     <li>
       <%= pc.label :url, "Url:" %>
-      <%= pc.text_field :url %>
+      <%= pc.text_field :url, :class => "text"%>
     </li>
     <% end%>
     <li>
