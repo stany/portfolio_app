@@ -79,16 +79,4 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_equal 3, project.reload.tags.size
   end
   
-  private
-  def login_and_set_host(user = nil)
-    user = user ? user : Factory(:user)
-    login_as(user)
-    host! "#{user.login}.test"
-    user
-  end
-
-  def set_host(user)
-    host! "#{user.login}.test"
-    user
-  end
 end

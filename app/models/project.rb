@@ -8,6 +8,8 @@ class Project < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
+  has_many :assets
+
   private
   def liquidize
     self.description_view = RedCloth.new(Liquid::Template.parse(self.description).render).to_html

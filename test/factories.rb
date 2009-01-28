@@ -27,3 +27,9 @@ Factory.define :project do |p|
   p.ended_on { 1.month.ago.to_s :db }
 end
 
+
+Factory.define :asset do |a|
+  a.photo File.new(File.join(Rails.root, 'test', 'fixtures', '12k.png'))
+  a.association :project, :factory => :project
+end
+
