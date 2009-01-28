@@ -2,4 +2,9 @@
   <h3><%= h(project.title) %></h3>
   <%= project.description_view %>
   <p>Started on: <%= project.started_on %></p>
+  <p>Ended on: <%= project.ended_on %></p>
+  <p>Tags: <%= project.tags.join(', ') %></p>
+  <% if project.company %>
+    <p>Company: <%= link_to project.company.name, project.company.url %></p>
+  <% end %>
 <% end %>
