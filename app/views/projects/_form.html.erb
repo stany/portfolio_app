@@ -9,16 +9,26 @@
       <%= f.label :description, "Description:" %>
       <%= f.text_area :description, {:rows => 5, :cols => 20} %>
     </li>
+    <li>
+      <%= f.label :tag_list, "Tags:" %>
+      <%= f.text_field :tag_list %>
+    </li>
   </ol>
 </fieldset>
 
 <fieldset>
   <legend> How long and where was the project? </legend>
   <ol>
+    <% fields_for 'project[company_attributes]', @project.company do |pc| %>
     <li>
-      <%= f.label :company, "Company:" %>
-      <%= f.text_field :company %>
+      <%= pc.label :name, "Name:" %>
+      <%= pc.text_field :name %>
     </li>
+    <li>
+      <%= pc.label :url, "Url:" %>
+      <%= pc.text_field :url %>
+    </li>
+    <% end%>
     <li>
       <%= f.label :started_on, "Started on:" %>
       <%= f.date_select :started_on %>
