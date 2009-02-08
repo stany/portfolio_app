@@ -37,7 +37,7 @@ var EndlessPage = Class.create({
   },
   
   checkScroll: function () {
-    if(this.timer == undefined || this.total_pages == this.current_page) {
+    if(this.timer == undefined || this.total_pages == this.current_page || this.total_pages == 0) {
       // listener was stopped or we've run out of pages
       return; 
     }

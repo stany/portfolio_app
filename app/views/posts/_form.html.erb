@@ -1,0 +1,18 @@
+<fieldset class="CreateProjectFields">
+  <legend> Post information </legend>
+  <ul>
+    <li>
+      <%= f.label :title, "Title:" %>
+      <%= f.text_field :title, :class => "text" %>
+    </li>
+    <li>
+      <%= f.label :content, "Content:" %>
+      <%= f.text_area :content %>
+    </li>
+    <li>
+      <%= f.label :tag_list, "Tags:" %>
+      <%= f.text_field :tag_list, :class => "text" %>
+    </li>
+  </ul>
+</fieldset>
+

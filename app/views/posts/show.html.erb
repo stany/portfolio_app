@@ -1,0 +1,12 @@
+<div class="span-24">
+  <% div_for @post do %>
+    <h3><%= h(@post.title) %></h3>
+    <ul>
+      <li><strong>Tags:</strong> <%= @post.tags.join(', ') %></li>
+    </ul>
+    <%= @post.content_view %>
+    <% owner_area do %>
+      <%= link_to 'Edit', edit_post_path(@post), :class => "Button" %>
+    <% end %>
+  <% end %>
+</div>

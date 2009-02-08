@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081205185930) do
+ActiveRecord::Schema.define(:version => 20090208154016) do
 
   create_table "assets", :force => true do |t|
     t.string   "photo_file_name"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(:version => 20081205185930) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content"
+    t.text     "content_view"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["user_id"], :name => "user_id_index"
 
   create_table "projects", :force => true do |t|
     t.integer  "user_id"

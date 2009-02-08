@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
 
   has_many :projects
+  has_many :posts
 
 
   validates_presence_of     :login
