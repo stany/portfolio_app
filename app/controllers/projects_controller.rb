@@ -9,6 +9,11 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js do
+        render :update do |page|
+          page.insert_html :bottom, 'projects', :partial => @projects
+        end
+      end
     end
   end
 

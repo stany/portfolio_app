@@ -13,6 +13,8 @@
     <script src="/javascripts/controls.js?1224095462" type="text/javascript"></script>
     <script src="/javascripts/application.js?1224090267" type="text/javascript"></script>
     
+    <script src="/javascripts/endless_page.js?1224090267" type="text/javascript"></script>
+    
   </head>
 
   <body>
@@ -35,7 +37,9 @@
       
       <div class="clearfix"></div>
       <div id="footer">Powered by rails</div>      
-    
+      <div id="spinner" style="position: absolute; display: none; right: 1%; margin-top: -100px;">
+        <%= image_tag 'spinner.gif' %>
+      </div>
     </div>
 
   </body>

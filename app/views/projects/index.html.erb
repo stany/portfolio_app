@@ -2,9 +2,11 @@
   
   <h2>Projects</h2>
   
-  <%= render :partial => @projects %>
+  <div id="projects">
+    <%= render :partial => @projects %>
+  </div>
   
-  <%= will_paginate @projects %>
+  <%= will_paginate @projects, :id => 'projects_will_paginate_links' %>
   
 </div>
 
@@ -14,4 +16,11 @@
       <li class="AddProject"><%= link_to "<span>Add new project</span>", new_project_url, :class => "Button" %></li>
     </ul>
   <% end%>
-</div>  
+</div>
+
+<% javascript_tag do %>
+  document.observe('dom:loaded', function(){
+    new EndlessPage(<%= @projects.total_pages %>, '<%= projects_path %>', 'projects_will_paginate_links', 'spinner');
+  });
+<% end %>
+
