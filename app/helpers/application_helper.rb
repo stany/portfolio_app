@@ -3,7 +3,7 @@ module ApplicationHelper
   
   def owner_area(&block)
     if current_user && current_user == @user
-      concat capture(&block), block.binding
+      concat capture(&block)
     end
   end
   
