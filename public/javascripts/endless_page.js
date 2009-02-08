@@ -46,7 +46,7 @@ var EndlessPage = Class.create({
 	  if(this.distanceToBottom() < this.distance_to_bottom_offset) {
 			this.current_page++; // move to next page
 			this.showSpinner();
-			new Ajax.Request(this.ajax_path, { method: 'get', parameters: { page: this.current_page }, onComplete: function(){ this.hideSpinner()}.bind(this) });
+			new Ajax.Request(this.ajax_path, { method: 'get', parameters: { page: this.current_page }, onComplete: function(){this.hideSpinner()}.bind(this) });
 		}
 
 	  // start the listener again
