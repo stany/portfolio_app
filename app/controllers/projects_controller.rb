@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
 
   before_filter :check_user
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show, :tag]
 
   # GET /projects
   def index
-    @projects = @user.projects.all.paginate(:page => @page, :per_page => 10)
+    @projects = @user.projects.paginate(:page => @page, :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -75,6 +75,18 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(projects_url) }
+    end
+  end
+
+  def tag
+    @projects = @user.projects.find_tagged_with(params[:tag]).paginate(:page => @page, :per_page => 10)
+    respond_to do |format|
+      format.html
+      format.js do
+        render :update do |page|
+          page.insert_html :bottom, 'projects', :partial => @projects
+        end
+      end
     end
   end
 

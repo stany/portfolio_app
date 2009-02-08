@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = @user.posts.all.paginate(:page => @page, :per_page => 10)
+    @posts = @user.posts.paginate(:page => @page, :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb

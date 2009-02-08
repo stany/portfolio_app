@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
   acts_as_taggable_on :tags
 
   has_many :assets
-
+  
   def company_attributes=(attributes)
     if self.company
       self.company.attributes = attributes
