@@ -1,10 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :posts
+
   map.resources :companies
 
   map.resources :projects do |project|
     project.resources :assets
   end
-
+  
+  map.tagged_projects 'projects/tag/:tag', :controller => 'projects', :action => 'tag' 
+  
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'

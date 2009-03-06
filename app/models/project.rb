@@ -7,12 +7,12 @@ class Project < ActiveRecord::Base
   
   after_update :save_company
   
-  before_save :liquidize
+  before_save :htmlize
 
   acts_as_taggable_on :tags
 
   has_many :assets
-
+  
   def company_attributes=(attributes)
     if self.company
       self.company.attributes = attributes
@@ -27,7 +27,7 @@ class Project < ActiveRecord::Base
     self.company.save(false)
   end
   
-  def liquidize
-    self.description_view = RedCloth.new(Liquid::Template.parse(self.description).render).to_html
+  def htmlize
+    self.description_view = RedCloth.new(self.description).to_html
   end
 end

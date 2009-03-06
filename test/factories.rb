@@ -33,3 +33,8 @@ Factory.define :asset do |a|
   a.association :project, :factory => :project
 end
 
+Factory.define :post do |p|
+  p.association :user, :factory => :user
+  p.title "First blog post"
+  p.content "First post content"
+end

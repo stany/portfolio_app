@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
 
@@ -77,6 +77,14 @@ class ProjectsControllerTest < ActionController::TestCase
     put :update, {:id => project.to_param, :project => {:tag_list => 'one, two, three'}}
     assert_redirected_to projects_path
     assert_equal 3, project.reload.tags.size
+  end
+
+  test "should get by tag" do
+    project = Factory(:project, :tag_list => 'one')
+    login_and_set_host(project.user)
+    get :tag, {:tag => 'one'}
+    assert_response :success
+    assert assigns(:projects).include?(project)
   end
   
 end

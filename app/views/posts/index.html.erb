@@ -1,0 +1,26 @@
+<div class="span-16">
+  
+  <h2>Latest blog posts</h2>
+  
+  <div id="posts">
+    <%= render :partial => @posts %>
+  </div>
+  
+  <%= will_paginate @posts, :id => 'posts_will_paginate_links' %>
+  
+</div>
+
+<div class="span-8 last">
+  <% owner_area do %>
+    <ul class="ActionButton">
+      <li class="AddProject"><%= link_to "<span>Add new blog post</span>", new_post_url, :class => "Button" %></li>
+    </ul>
+  <% end%>
+</div>
+
+<% javascript_tag do %>
+  document.observe('dom:loaded', function(){
+    new EndlessPage(<%= @posts.total_pages %>, '<%= posts_path %>', 'posts_will_paginate_links', 'spinner');
+  });
+<% end %>
+

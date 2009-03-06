@@ -1,0 +1,25 @@
+<div class="span-16">
+  
+  <h2>Projects tagged with <%= h(params[:tag]) %></h2>
+  
+  <div id="projects">
+    <%= render :partial => @projects %>
+  </div>
+  
+  <%= will_paginate @projects, :id => 'projects_will_paginate_links' %>
+  
+</div>
+
+<div class="span-8 last">
+  <% owner_area do %>
+    <ul class="ActionButton">
+      <li class="AddProject"><%= link_to "<span>Add new project</span>", new_project_url, :class => "Button" %></li>
+    </ul>
+  <% end%>
+</div>
+
+<% javascript_tag do %>
+  document.observe('dom:loaded', function(){
+    new EndlessPage(<%= @projects.total_pages %>, '<%= projects_path %>', 'projects_will_paginate_links', 'spinner');
+  });
+<% end %>

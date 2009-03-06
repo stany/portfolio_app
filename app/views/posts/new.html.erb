@@ -1,0 +1,24 @@
+<div class="span-24">
+
+  <h2> New blog post </h2>
+  
+  <%= error_messages_for :post %>
+  
+  <% form_for @post do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    <fieldset class="submit">
+      <%= f.submit "Create", :class => "Button" %>
+    </fieldset>
+  <% end %>
+  
+  
+  <% content_for :sidebar do %>
+    <div class="sidebar_block">
+      <ul>
+        <li><%= link_to "Blog", posts_url %></li>
+      </ul>
+    </div>
+  <% end %>
+
+</div>
+
