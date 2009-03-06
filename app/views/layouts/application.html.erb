@@ -4,6 +4,7 @@
     <meta content='text/html;charset=UTF-8' http-equiv='content-type' />
     <title>Portfolio App</title>
 
+    <link href="/stylesheets/portfolio.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
 
@@ -15,9 +16,17 @@
     
     <script src="/javascripts/endless_page.js?1224090267" type="text/javascript"></script>
     
+    <!-- Combo-handled YUI CSS files: -->
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/assets/skins/sam/skin.css">
+    <!-- Combo-handled YUI JS files: -->
+    <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.7.0/build/yahoo-dom-event/yahoo-dom-event.js&2.7.0/build/animation/animation-min.js&2.7.0/build/dragdrop/dragdrop-min.js&2.7.0/build/container/container_core-min.js&2.7.0/build/menu/menu-min.js&2.7.0/build/element/element-min.js&2.7.0/build/button/button-min.js&2.7.0/build/editor/editor-min.js&2.7.0/build/resize/resize-min.js"></script>
+
+    
+    </script>
+
   </head>
 
-  <body>
+  <body class="yui-skin-sam">
     
     <div id="container">
       
@@ -26,7 +35,7 @@
         <ul id="navi">
           <li class="active"><%= link_to 'Projects', projects_path %></li>
           <li><%= link_to 'Blog', posts_path %></li>
-          <li><a href="#">Books</a></li>
+          <li><a href="#">About me</a></li>
         </ul>
         <div id="sub_navi">Welcome back user, <a href="#">Logout</a></div>
       </div>      

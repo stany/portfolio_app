@@ -4,7 +4,7 @@
     <ul>
       <li><strong>Tags:</strong> <%= @post.tags.join(', ') %></li>
     </ul>
-    <%= @post.content_view %>
+    <%= @post.content %>
     <% owner_area do %>
       <%= link_to 'Edit', edit_post_path(@post), :class => "Button" %>
     <% end %>

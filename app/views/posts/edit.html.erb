@@ -4,7 +4,7 @@
   
   <%= error_messages_for :post %>
   
-  <% form_for @post do |f| %>
+  <% form_for @post, :html => {:id => 'post_form'} do |f| %>
     <%= render :partial => 'form', :locals => {:f => f} %>
     <fieldset class="submit">
       <%= f.submit "Save", :class => "Button Left" %>

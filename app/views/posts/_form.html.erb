@@ -16,3 +16,19 @@
   </ul>
 </fieldset>
 
+<% javascript_tag do -%>
+  var myEditor = new YAHOO.widget.SimpleEditor('post_content', { 
+    height: '300px', 
+    width: '622px', 
+    dompath: false, //Turns on the bar at the bottom 
+    animate: true
+  }); 
+  myEditor.render(); 
+  
+  //Inside an event handler after the Editor is rendered
+  YAHOO.util.Event.on('post_form', 'submit', function() {
+    //Put the HTML back into the text area
+    myEditor.saveHTML();
+  });
+  
+<% end -%>

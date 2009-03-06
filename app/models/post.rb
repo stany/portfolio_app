@@ -4,10 +4,4 @@ class Post < ActiveRecord::Base
   
   validates_presence_of :title, :content, :user
   
-  before_save :htmlize
-  
-  private
-  def htmlize
-    self.content_view = RedCloth.new(self.content).to_html
-  end
 end

@@ -16,11 +16,6 @@ class PostTest < ActiveSupport::TestCase
     assert !post.new_record?
   end
   
-  test "should convert content to html" do
-    post = Factory(:post, :content => '*hello*')
-    assert_equal '<p><strong>hello</strong></p>', post.content_view
-  end
-  
   test "should have tags" do
     post = Factory(:post)
     post.tag_list = "first, second, third"
