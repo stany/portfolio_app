@@ -13,14 +13,14 @@
 <div class="span-8 last">
   <% owner_area do %>
     <ul class="ActionButton">
-      <li class="AddProject"><%= link_to "<span>Add new blog post</span>", new_post_url, :class => "Button" %></li>
+      <li class="AddProject"><%= link_to "<span>Add new blog post</span>", new_post_path, :class => "Button" %></li>
     </ul>
   <% end%>
 </div>
 
 <% javascript_tag do %>
   document.observe('dom:loaded', function(){
-    new EndlessPage(<%= @posts.total_pages %>, '<%= posts_path %>', 'posts_will_paginate_links', 'spinner');
+    new EndlessPage(<%= @posts.total_pages %>, '<%= user_posts_path(@user) %>', 'posts_will_paginate_links', 'spinner');
   });
 <% end %>
 

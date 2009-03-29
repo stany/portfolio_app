@@ -4,7 +4,7 @@ require 'test_help'
 require 'factory_girl'
 require File.expand_path(File.dirname(__FILE__) + '/factories')
 
-class Test::Unit::TestCase
+class ActiveSupport::TestCase
   include AuthenticatedTestHelper
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
@@ -38,20 +38,4 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-end
-
-def host!(host)
-  @request.host = host
-end
-
-def login_and_set_host(user = nil)
-  user = user ? user : Factory(:user)
-  login_as(user)
-  host! "#{user.login}.test"
-  user
-end
-
-def set_host(user)
-  host! "#{user.login}.test"
-  user
 end

@@ -8,8 +8,6 @@ Factory.define :user do |u|
   u.created_at {5.days.ago.to_s :db}
   u.remember_token_expires_at {1.days.from_now.to_s}
   u.remember_token {Digest::SHA1.hexdigest('1')}
-  u.activated_at {5.days.ago.to_s :db}
-  u.activation_code nil
 end
 
 Factory.define :company do |c|

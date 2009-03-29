@@ -1,6 +1,13 @@
 require File.dirname(__FILE__) + '/../test_helper'
+require 'users_controller'
+
+# Re-raise errors caught by the controller.
+class UsersController; def rescue_action(e) raise e end; end
 
 class UsersControllerTest < ActionController::TestCase
+  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
+  # Then, you can remove it from this and the units test.
+  include AuthenticatedTestHelper
 
   def test_should_allow_signup
     assert_difference 'User.count' do
@@ -43,35 +50,6 @@ class UsersControllerTest < ActionController::TestCase
   
 
   
-  def test_should_sign_up_user_with_activation_code
-    create_user
-    assigns(:user).reload
-    assert_not_nil assigns(:user).activation_code
-  end
-
-  def test_should_activate_user
-    user = Factory(:user, :login => 'aaron', :activated_at => nil, :activation_code => "qwertz")
-    assert_nil User.authenticate(user.login, 'monkey')
-    get :activate, :activation_code => user.activation_code
-    assert_redirected_to login_path
-
-    assert_not_nil flash[:notice]
-    assert_equal user, User.authenticate(user.login, 'monkey')
-  end
-  
-  def test_should_not_activate_user_without_key
-    get :activate
-    assert_nil flash[:notice]
-  rescue ActionController::RoutingError
-    # in the event your routes deny this, we'll just bow out gracefully.
-  end
-
-  def test_should_not_activate_user_with_blank_key
-    get :activate, :activation_code => ''
-    assert_nil flash[:notice]
-  rescue ActionController::RoutingError
-    # well played, sir
-  end
 
   protected
     def create_user(options = {})

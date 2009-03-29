@@ -31,11 +31,6 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal 'Yahoo Inc.', project.reload.company.name
   end
 
-  test "should convert description to html" do
-    project = Factory(:project, :description => '*hello*')
-    assert_equal '<p><strong>hello</strong></p>', project.description_view
-  end
-
   test "can belong to company" do
     company = Factory(:company)
     project = Factory(:project, :company => company)

@@ -2,7 +2,7 @@
   <h3><%= link_to h(project.title), project %></h3>
   <ul>
     <li><strong>Date:</strong> <%= project.started_on %> to <%= project.ended_on %></li>
-    <li><strong>Tags:</strong> <%= project.tags.map {|t| link_to(h(t), tagged_projects_path(t.name))}.join(', ') %></li>
+    <li><strong>Tags:</strong> <%= project.tags.map {|t| link_to(h(t), tagged_projects_path(@user, t.name))}.join(', ') %></li>
     <% if project.company %>
       <li><strong>Company:</strong> <%= link_to project.company.name, project.company.url %></li>
     <% end %>

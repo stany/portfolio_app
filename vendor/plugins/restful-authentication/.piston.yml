@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 2ae4c22f5a42100458f8be89c9f366b4099a4451
+  branch: master
+repository_url: git://github.com/technoweenie/restful-authentication.git
+lock: false
+repository_class: Piston::Git::Repository

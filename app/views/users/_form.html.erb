@@ -1,0 +1,26 @@
+<% form_for user do |f| %>
+  <fieldset>
+    <legend> Login data </legend>
+    <ul>
+      <li>
+        <%= f.label :login, "Login:" %>
+        <%= f.text_field :login %>
+      </li>
+      <li>
+        <%= f.label :email, "Email:" %>
+        <%= f.text_field :email %>
+      </li>
+      <li>
+        <%= f.label :password, "Password:" %>
+        <%= f.password_field :password %>
+      </li>
+      <li>
+        <%= f.label :password_confirmation, "Confirm password:" %>
+        <%= f.password_field :password_confirmation %>
+      </li>
+    </ul>
+  </fieldset>
+  <fieldset class='submit'>
+    <%= f.submit "Sign up" %>
+  </fieldset>
+<% end %>

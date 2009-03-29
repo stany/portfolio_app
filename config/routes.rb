@@ -1,15 +1,16 @@
 
 
 ActionController::Routing::Routes.draw do |map|
-  map.resources :posts
-
   map.resources :companies
 
-  map.resources :projects do |project|
-    project.resources :assets
+  map.resources :users, :shallow => true do |user|
+    user.resources :posts
+    user.resources :projects do |project|
+      project.resources :assets
+    end
   end
   
-  map.tagged_projects 'projects/tag/:tag', :controller => 'projects', :action => 'tag' 
+  map.tagged_projects '/users/:user_id/projects/tag/:tag', :controller => 'projects', :action => 'tag' 
   
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
@@ -19,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.resource :session
+  map.resources :pages
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -4,7 +4,7 @@
   
   <%= error_messages_for :project %>
   
-  <% form_for @project do |f| %>
+  <% form_for [current_user, @project] do |f| %>
     <%= render :partial => 'form', :locals => {:f => f} %>
     <fieldset class="submit">
       <%= f.submit "Create", :class => "Button" %>
@@ -15,7 +15,7 @@
   <% content_for :sidebar do %>
     <div class="sidebar_block">
       <ul>
-        <li><%= link_to "Project list", projects_url %></li>
+        <li><%= link_to "Project list", user_projects_path(current_user) %></li>
       </ul>
     </div>
   <% end %>

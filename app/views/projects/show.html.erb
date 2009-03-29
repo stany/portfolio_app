@@ -1,3 +1,5 @@
+<% session_key = ActionController::Base.session_options[:key] %>
+
 <div class="span-24">
   <% div_for @project do %>
     <h3><%= h(@project.title) %></h3>
@@ -9,6 +11,12 @@
     <% end %>
     </ul>
     <%= @project.description_view %>
+    
+    <div id="assets">
+      <%= @project.assets.map{|a| image_tag(a.photo.url(:thumb))} %>
+    </div>
+    
+    
     <% owner_area do %>
       <%= link_to 'Edit', edit_project_path(@project), :class => "Button" %>
       <%= link_to 'Upload screenshots', new_project_asset_path(@project), :class => "Button", :id => 'upload_project_assets' %>
@@ -27,21 +35,27 @@
 
 <% javascript_tag do -%>
   // Instantiate a Panel from markup
-  var panel = new YAHOO.widget.Panel("myPanel", { width:"320px", visible:false, constraintoviewport:true, draggable:true, fixedcenter: true } );
-  panel.render();
+  YAHOO.namespace('upload');
+  YAHOO.upload.onFileSelect = function(e){
+    if (e.fileList != null) {
+      YAHOO.upload.uploader.uploadAll("<%= project_assets_path(@project, session_key => cookies[session_key], request_forgery_protection_token => form_authenticity_token) %>", 'POST', {}, 'asset[flash_photo]');
+    }
+  }
   
-  YAHOO.util.Event.addListener("upload_project_assets", "click", function(e){panel.show(); YAHOO.util.Event.stopEvent(e)}, panel, true);
+  YAHOO.upload.onUploadComplete = function(e){
+    YAHOO.upload.panel.hide();
+    window.location = window.location;
+  }
+  
+  YAHOO.upload.panel = new YAHOO.widget.Panel("myPanel", { width:"320px", visible:false, constraintoviewport:true, draggable:true, fixedcenter: true } );
+  YAHOO.upload.panel.render();
+  
+  YAHOO.util.Event.addListener("upload_project_assets", "click", function(e){YAHOO.upload.panel.show(); YAHOO.util.Event.stopEvent(e)}, YAHOO.upload.panel, true);
   
   YAHOO.widget.Uploader.SWFURL = "/flash/uploader.swf";
-  var uploader = new YAHOO.widget.Uploader( "uploaderContainer", "/images/rails.png" );
-  uploader.addListener('fileSelect', onFileSelect);
-  
-  
-  function onFileSelect(e){
-    if (e.fileList != null) {
-      uploader.uploadAll("<%= project_assets_path(@project, '_session_id' => session.session_id) %>", 'POST', {authenticity_token: '<%= form_authenticity_token %>'}, 'asset[photo]');
-      }
-  }
+  YAHOO.upload.uploader = new YAHOO.widget.Uploader( "uploaderContainer", "/images/rails.png" );
+  YAHOO.upload.uploader.addListener('fileSelect', YAHOO.upload.onFileSelect);
+  YAHOO.upload.uploader.addListener('uploadComplete', YAHOO.upload.onUploadComplete);
 <% end %>
 
 

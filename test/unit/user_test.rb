@@ -4,19 +4,14 @@ class UserTest < ActiveSupport::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
   # Then, you can remove it from this and the functional test.
   include AuthenticatedTestHelper
-  fixtures :users
+
+  
 
   def test_should_create_user
     assert_difference 'User.count' do
       user = Factory(:user)
       assert !user.new_record?, "#{user.errors.full_messages.to_sentence}"
     end
-  end
-
-  def test_should_initialize_activation_code_upon_creation
-    user = Factory(:user)
-    user.reload
-    assert_not_nil user.activation_code
   end
 
   def test_should_require_login

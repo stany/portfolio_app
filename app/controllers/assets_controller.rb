@@ -10,18 +10,10 @@ class AssetsController < ApplicationController
   def create
     @asset = @project.assets.build(params[:asset])
     
-    respond_to do |format|
-      if @asset.save
-        format.html do 
-          flash[:success] = "Photo uploaded successfully"
-          redirect_to @project
-        end
-      else
-        format.html do
-          flash[:error] = "Photo not uploaded"
-          redirect_to @project
-        end
-      end
+    if @asset.save
+      head :ok
+    else
+      head :error
     end
   end
   

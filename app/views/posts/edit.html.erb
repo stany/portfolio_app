@@ -17,7 +17,7 @@
   <% content_for :sidebar do %>
     <div class="sidebar_block">
       <ul>
-        <li><%= link_to "Blog", posts_url %></li>
+        <li><%= link_to "Blog", user_posts_path(current_user) %></li>
       </ul>
     </div>
   <% end %>

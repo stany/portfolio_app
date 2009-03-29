@@ -5,15 +5,11 @@ class AssetsControllerTest < ActionController::TestCase
   test "should upload photo" do
     photo = File.new(File.join(Rails.root, 'test', 'fixtures', '12k.png'))
     project = Factory(:project)
-    login_and_set_host(project.user)
+    login_as(project.user)
     assert_difference 'Asset.count' do
-      post :create, {:project_id => project.to_param, :asset => {:photo => photo}}
-      assert_redirected_to project_path(assigns(:project))
+      post :create, :project_id => project.to_param, :asset => {:photo => photo}, :user_id => project.user.to_param
+      assert_response 200
     end
   end
 
-  test "should destory photo" do
-    
-  end
-  
 end

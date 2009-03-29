@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -25,16 +25,19 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'mislav-will_paginate',        :source => 'http://gems.github.com', :lib => 'will_paginate',       :version => ">= 2.3.6"
-  config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on", :version => ">= 1.0.2"
+  config.gem 'mislav-will_paginate',        :source => 'http://gems.github.com', :lib => 'will_paginate',       :version => ">= 2.3.8"
+  config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on", :version => ">= 1.0.5"
   config.gem 'annotate-models', :lib => "annotate_models", :version => ">= 1.0.4"
-  config.gem 'mocha', :version => ">= 0.9.4"
+  config.gem 'mocha', :version => ">= 0.9.5"
   config.gem 'right_http_connection', :version => ">= 1.2.4"
-  config.gem 'right_aws', :version => ">= 1.9.0"
-  config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com', :version => ">= 1.1.5"
-  config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com', :version => ">= 2.2.2"
-  config.gem 'RedCloth', :version => ">= 4.1.1"
-  config.gem 'liquid', :version => ">= 1.9.0"
+  config.gem 'right_aws', :version => ">= 1.10.0"
+  config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com', :version => ">= 1.2.0"
+  config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com', :version => ">= 2.2.7"
+  config.gem 'mime-types', :lib => 'mime/types', :version => '>= 1.16'
+  config.gem "yfactorial-utility_scopes", :lib => 'utility_scopes', :source => 'http://gems.github.com/', :version => '>= 0.2.2'
+  
+  #config.gem 'RedCloth', :version => ">= 4.1.9"
+  #config.gem 'liquid', :version => ">= 2.0.0"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -43,6 +46,7 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
+  config.load_paths += %W( #{RAILS_ROOT}/app/middleware )
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
@@ -57,10 +61,7 @@ Rails::Initializer.run do |config|
   # If you change this key, all old sessions will become invalid!
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
-  config.action_controller.session = {
-    :session_key => '_portfolio_app_session',
-    :secret      => '220ebac5d9fed5a9aa53e2dcf797677923c00b9496db0834f77b0cdcdc72f6a1bc54e19fd348b32160361e7bcedf882897707439da2fad907ca8d0d3a5618646'
-  }
+  
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information

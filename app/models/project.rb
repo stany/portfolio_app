@@ -7,8 +7,6 @@ class Project < ActiveRecord::Base
   
   after_update :save_company
   
-  before_save :htmlize
-
   acts_as_taggable_on :tags
 
   has_many :assets
@@ -25,9 +23,5 @@ class Project < ActiveRecord::Base
   
   def save_company
     self.company.save(false)
-  end
-  
-  def htmlize
-    self.description_view = RedCloth.new(self.description).to_html
   end
 end
