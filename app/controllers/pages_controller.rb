@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   end
   
   def ensure_valid
-    unless %w(home_page).include? page
+    unless %w(home).include? page
       render :nothing => true, :status => 404 and return false
     end
   end
