@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = @user.projects.paginate(:page => @page, :per_page => 10)
+    @projects = @user.projects.with(:tags, :company).paginate(:page => @page, :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
