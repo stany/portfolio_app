@@ -1,0 +1,4 @@
+<% form_for [@project, @asset], :html => {:multipart => true} do |f| -%>
+  <%= f.file_field :photo %>
+  <%= f.submit 'Upload' %>
+<% end -%>

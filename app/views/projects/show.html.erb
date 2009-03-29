@@ -11,6 +11,37 @@
     <%= @project.description_view %>
     <% owner_area do %>
       <%= link_to 'Edit', edit_project_path(@project), :class => "Button" %>
+      <%= link_to 'Upload screenshots', new_project_asset_path(@project), :class => "Button", :id => 'upload_project_assets' %>
     <% end %>
   <% end %>
 </div>
+
+<div id="myPanel">
+  <div class="hd">Upload attachments</div>
+  <div class="bd">
+    <div id="uploaderContainer" style="width:120px;height:50px"></div>
+  </div>
+</div>
+
+
+
+<% javascript_tag do -%>
+  // Instantiate a Panel from markup
+  var panel = new YAHOO.widget.Panel("myPanel", { width:"320px", visible:false, constraintoviewport:true, draggable:true, fixedcenter: true } );
+  panel.render();
+  
+  YAHOO.util.Event.addListener("upload_project_assets", "click", function(e){panel.show(); YAHOO.util.Event.stopEvent(e)}, panel, true);
+  
+  YAHOO.widget.Uploader.SWFURL = "/flash/uploader.swf";
+  var uploader = new YAHOO.widget.Uploader( "uploaderContainer", "/images/rails.png" );
+  uploader.addListener('fileSelect', onFileSelect);
+  
+  
+  function onFileSelect(e){
+    if (e.fileList != null) {
+      uploader.uploadAll("<%= project_assets_path(@project, '_session_id' => session.session_id) %>", 'POST', {authenticity_token: '<%= form_authenticity_token %>'}, 'asset[photo]');
+      }
+  }
+<% end %>
+
+

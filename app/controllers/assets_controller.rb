@@ -3,6 +3,10 @@ class AssetsController < ApplicationController
   before_filter :login_required
   before_filter :load_project
   
+  def new
+    @asset = @project.assets.build
+  end
+  
   def create
     @asset = @project.assets.build(params[:asset])
     
@@ -20,8 +24,6 @@ class AssetsController < ApplicationController
       end
     end
   end
-  
-  
   
   
   private
